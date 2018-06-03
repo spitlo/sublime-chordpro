@@ -1,0 +1,52 @@
+%YAML 1.2
+---
+name: ChordPro
+file_extensions: [chordpro, chord, crd, chpro, cho, chopro, pro]
+scope: source.chordpro
+
+variables:
+  ident: '[A-Za-z_][A-Za-z_0-9]*'
+  keywords: '(new_song|start_of_bridge|end_of_bridge|start_of_chorus|end_of_chorus|start_of_tab|end_of_tab|no_grid|grid|new_page|new_physical_page|column_break|ns|soc|eoc|sob|eob|ng|g|npp|np|colb|col)'
+
+contexts:
+  prototype:
+    - include: comments
+
+  main:
+    - include: tag_no_params
+    - include: tag_with_params
+    - include: tag_chord
+
+  tag_no_params:
+    - match: '({)(new_song|start_of_bridge|end_of_bridge|start_of_chorus|end_of_chorus|start_of_tab|end_of_tab|no_grid|grid|new_page|new_physical_page|column_break|ns|soc|eoc|sob|eob|ng|g|npp|np|colb|col)(})'
+      captures:
+        1: punctuation.section.block.begin.chordpro
+        2: entity.name.tag.chordpro
+        3: punctuation.section.block.end.chordpro
+
+  tag_with_params:
+    - match: '({)(title|subtitle|composer|artist|album|key|time|tempo|comment_italic|comment|define|textfont|textsize|chordfont|chordsize|columns|page_type|t|st|ci|c|col)(:)(.+)(})'
+      captures:
+        1: punctuation.section.block.begin.chordpro
+        2: entity.name.function.chordpro
+        3: punctuation.separator.chordpro
+        4: variable.parameter.chordpro
+        5: punctuation.section.block.end.chordpro
+
+  tag_chord:
+    - match: \[
+      scope: punctuation.definition.tag.begin.chordpro
+      push: chord
+
+  chord:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double.chordpro
+    - match: '\.'
+      scope: constant.character.escape.chordpro
+    - match: \]
+      scope: punctuation.definition.tag.end.chordpro
+      pop: true
+
+  comments:
+    - match: '^#.*$'
+      scope: punctuation.definition.comment.chordpro

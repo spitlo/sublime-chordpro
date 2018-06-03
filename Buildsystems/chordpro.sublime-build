@@ -1,12 +1,15 @@
 {
-    "cmd": ["chordii","-o","$file_base_name-formatted.ps", "$file"],
-    "selector": "text.chordpro",
-
-    "osx": {
-    	"cmd": ["$packages/ChordPro/bin/chordii.osx","-o","$file_base_name-formatted.ps", "$file"]
+  "target": "chordpro_build",
+  "selector": "text.chordpro",
+  "cancel": {"kill": true},
+  "variants": [
+    {
+      "name": "To HTML",
+      "to_html": true,
     },
-
-    "windows": {
-    	"cmd": ["$packages\\ChordPro\\bin\\chordii.exe","-o","$file_base_name-formatted.ps", "$file"]
-    }
+    {
+      "name": "To PDF",
+      "to_pdf": true,
+    },
+  ]
 }

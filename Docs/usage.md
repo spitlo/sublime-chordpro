@@ -15,7 +15,4 @@ _ `_ci` insert/wrap {comment_italic: }
 
 #Build
 
-The build system specified will use the include chordii program to compiles the file to a postscript document.
-F7 or Tools->Build will output the file into the path where the working file is located.
-
-Currently only for osx and windows. feel free to include the linux binary as well.
+The build system is being rebuilt and should not be used atm.

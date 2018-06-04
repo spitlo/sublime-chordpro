@@ -1,14 +1,20 @@
 {
-  "target": "chord_pro_build",
+  "cmd": ["chordpro", "$file", "-o", "${file_path}/${file_base_name}.pdf"],
   "selector": "source.chordpro",
-  "variants": [
-    {
-      "name": "To HTML",
-      "to_html": true,
-    },
-    {
-      "name": "To PDF",
-      "to_pdf": true,
-    },
-  ]
 }
+
+
+// {
+//   "target": "chord_pro_build",
+//   "selector": "source.chordpro",
+//   "variants": [
+//     {
+//       "name": "To HTML",
+//       "to_html": true,
+//     },
+//     {
+//       "name": "To PDF",
+//       "to_pdf": true,
+//     },
+//   ]
+// }

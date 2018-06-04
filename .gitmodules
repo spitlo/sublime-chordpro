@@ -1,6 +1,0 @@
-[submodule "bin/pychopro"]
-	path = bin/pychopro
-	url = https://github.com/jontsai/pychopro/
-[submodule "bin/pyfpdf"]
-	path = bin/pyfpdf
-	url = https://github.com/reingart/pyfpdf

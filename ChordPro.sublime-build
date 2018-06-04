@@ -1,7 +1,6 @@
 {
-  "target": "chordpro_build",
-  "selector": "text.chordpro",
-  "cancel": {"kill": true},
+  "target": "chord_pro_build",
+  "selector": "source.chordpro",
   "variants": [
     {
       "name": "To HTML",
